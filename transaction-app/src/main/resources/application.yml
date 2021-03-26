@@ -1,5 +1,54 @@
-display:
-  mach: 3
-  unit:
-    name: "mph"
-    factor: 2.23694
+# configure your datasource
+quarkus:
+
+  datasource:
+    jdbc:
+      url: jdbc:postgresql://localhost:5432/transactions
+      driver: org.postgresql.Driver
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgresql}
+    db-kind: postgresql
+
+  hibernate-orm:
+    database:
+      generation: update
+
+  http:
+    root-path: /v1/api/transactions
+    port: 8080
+
+  smallrye-health:
+    ui:
+      enable: true
+
+kafka:
+  bootstrap:
+    servers: localhost:9092
+
+mp.messaging:
+  # [Channel - data] - Produce data to Kafka
+  outgoing:
+
+    - deposits:
+      connector: smallrye-kafka
+      topic: transactions/deposits
+      key.serializer: org.apache.kafka.common.serialization.StringSerializer
+      value.serializer: io.quarkus.kafka.client.serialization.JsonbSerializer
+
+    - withdraws:
+      connector: smallrye-kafka
+      topic: transactions/deposits
+      key.serializer: org.apache.kafka.common.serialization.StringSerializer
+      value.serializer: io.quarkus.kafka.client.serialization.JsonbSerializer
+
+#      broadcast: true
+#      acks: 1
+  # [/Channel - data]
+  # [Channel - health] - Consume data from MQTT
+#  incoming:
+#    - health:
+#      topic: neo
+#      connector: smallrye-mqtt
+#      host: localhost
+#      broadcast: true
+  # [/Channel - health]
