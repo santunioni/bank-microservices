@@ -14,9 +14,9 @@
         <!--        Implementação do JPA ECLIPSELINK-->
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
-        <class>classes.Withdraw</class>
-        <class>classes.Deposit</class>
-        <class>classes.Transfer</class>
+        <class>com.santunioni.bankaccount.transaction.domain.Withdraw</class>
+        <class>com.santunioni.bankaccount.transaction.domain.Deposit</class>
+        <class>com.santunioni.bankaccount.transaction.domain.Transfer</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
@@ -39,9 +39,9 @@
         <!--        Implementação do JPA HIBERNATE-->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>classes.Withdraw</class>
-        <class>classes.Deposit</class>
-        <class>classes.Transfer</class>
+        <class>com.santunioni.bankaccount.transaction.domain.Withdraw</class>
+        <class>com.santunioni.bankaccount.transaction.domain.Deposit</class>
+        <class>com.santunioni.bankaccount.transaction.domain.Transfer</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>

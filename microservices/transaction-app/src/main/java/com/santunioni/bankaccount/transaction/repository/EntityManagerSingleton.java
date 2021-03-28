@@ -19,4 +19,25 @@ public class EntityManagerSingleton {
         return entityManagerInstance;
     }
 
+//        private static EntityManager entityManagerInstance = null;
+//
+//        private EntityManager entityManager;
+//        @Inject
+//        public EntityManagerSingleton(EntityManager entityManager) {
+//            this.entityManager = entityManager;
+//        }
+//
+//        private EntityManager getEntityManager() {
+//            return this.entityManager;
+//        }
+//
+//        private EntityManagerSingleton() {
+//        }
+//
+//        public static EntityManager getInstance() {
+//            if (entityManagerInstance == null) {
+//                entityManagerInstance = new com.santunioni.bankaccount.transaction.repository.EntityManagerSingleton().getEntityManager();
+//            }
+//            return entityManagerInstance;
+//        }
 }
