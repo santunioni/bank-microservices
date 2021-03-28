@@ -40,7 +40,7 @@ public class AccountService {
     }
 
     public void delete (Account account) {
-        accountRepository.deleteById(account.getAccountID());
+        accountRepository.deleteById(account.getAccountId());
     }
 
     public void perform(Withdraw withdraw) {

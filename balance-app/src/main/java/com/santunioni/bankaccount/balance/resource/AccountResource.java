@@ -34,7 +34,7 @@ public class AccountResource {
             System.out.println("Account already exist.");
         }
         return Response
-                .created(URI.create(account.getAccountID().replaceAll(" ","_")))
+                .created(URI.create(account.getAccountId().replaceAll(" ","_")))
                 .build();
     }
 

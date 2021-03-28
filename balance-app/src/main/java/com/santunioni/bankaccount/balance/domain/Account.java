@@ -1,24 +1,33 @@
 package com.santunioni.bankaccount.balance.domain;
 
-import lombok.*;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 public class Account {
 
     @Id
-    @Getter
     @Column(name = "account_id")
-    private String accountID;
+    private String accountId;
 
-    @Getter
-    @Setter
     @Column(name = "balance")
     private double balance;
 
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public Account(String accountId, double balance) {
+        this.accountId = accountId;
+        this.balance = balance;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
 }
