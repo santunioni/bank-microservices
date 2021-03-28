@@ -1,6 +1,6 @@
 package com.santunioni.bankaccount.transaction.repository;
 
-import com.santunioni.bankaccount.transaction.domain.Transaction;
+import com.santunioni.bankaccount.transaction.domain.ITransaction;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -26,7 +26,7 @@ public class TransactionRepository {
     }
 
     @Transactional(REQUIRED)
-    public void save(final Transaction transaction) {
+    public void save(final ITransaction transaction) {
         entityManager.getTransaction().begin();
         entityManager.persist(transaction);
         entityManager.getTransaction().commit();
