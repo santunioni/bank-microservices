@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="2.2"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+
+    <!-- ===================================================================================================================================== -->
+
+    <persistence-unit name="EclipseLink" transaction-type="JTA">
+        <description>Unidade de persistência da parte 2 do tutorial: implementações do JPA</description>
+
+        <!--        Implementação do JPA ECLIPSELINK-->
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+        <class>classes.Account</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:postgresql://localhost/balances"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="postgresql"/>
+
+            <!-- Configurações do EclipseLink (os parâmetros são reconhecidos se tiver utilizando a implementação do EclipseLink) -->
+            <property name="eclipselink.target-database" value="transactions"/>
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="Hibernate" transaction-type="JTA">
+        <description>Unidade de persistência da parte 2 do tutorial: implementações do JPA</description>
+
+        <!--        Implementação do JPA HIBERNATE-->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <class>classes.Account</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:postgresql://localhost/balances"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="postgresql"/>
+
+            <!-- Configurações do Hibernate (os parâmetros são reconhecidos se tiver utilizando a implementação do Hibernate -->
+            <!-- Possible values for hbm2ddl are: validate, update, create and create-drop. Esse comando é perigoso no ambiente de produção-->
+                <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+        </properties>
+
+    </persistence-unit>
+</persistence>

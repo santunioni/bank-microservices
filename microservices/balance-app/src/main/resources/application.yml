@@ -9,23 +9,27 @@ quarkus:
     password: ${POSTGRES_PASSWORD:postgresql}
     db-kind: postgresql
 
-  hibernate-orm:
-    database:
-      generation: update
+#  hibernate-orm:
+#    database:
+#      generation: update
 
   http:
     root-path: /v1/api
-    port: 8081
+    port: 8080
 
-  smallrye-health:
-    ui:
-      enable: true
+#  smallrye-health:
+#    ui:
+#      enable: true
+
+  application:
+    name: balance-app
 
 
 
 kafka:
   bootstrap:
     servers: localhost:9092
+
 
 mp.messaging:
   # [Channel - data] - Produce data to Kafka

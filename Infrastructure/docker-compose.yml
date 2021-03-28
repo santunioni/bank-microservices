@@ -10,6 +10,9 @@ services:
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
+    volumes:
+      - bankaccount-zookeeper-data:/var/lib/zookeeper/data
+      - bankaccount-zookeeper-logs:/var/lib/zookeeper/log
 
   broker:
     image: confluentinc/cp-server:6.1.1
@@ -39,6 +42,8 @@ services:
       CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 1
       CONFLUENT_METRICS_ENABLE: 'true'
       CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
+    volumes:
+      - bankaccount-kafka-data:/var/lib/kafka/data 
 
   schema-registry:
     image: confluentinc/cp-schema-registry:6.1.1
@@ -188,5 +193,11 @@ services:
       - POSTGRES_PASSWORD=postgresql
     ports:
       - "5432:5432"
-    # volumes:
-    #   - ./volumes/database:/var/lib/postgresql/data/
+    volumes:
+      - bankaccount-database:/var/lib/postgresql/data/
+
+volumes:
+  bankaccount-database: {}
+  bankaccount-zookeeper-data: {}
+  bankaccount-zookeeper-logs: {}
+  bankaccount-kafka-data: {}
