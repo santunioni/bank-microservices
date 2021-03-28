@@ -6,17 +6,17 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 import java.time.Duration;
 import java.util.Collections;
-import java.util.Properties;
+
+import static com.santunioni.bankaccount.balance.settings.Settings.brokerSettings;
 
 public class DepositConsumer {
 
     private static DepositConsumer instance = null;
     private final AccountService accountService = AccountService.getInstance();
-    private String topic;
-    private KafkaConsumer<String, Deposit> consumer = loadSettings();
+    private final String topic = "transactions-deposits";
+    private final KafkaConsumer<String, Deposit> consumer = loadSettings();
 
     private DepositConsumer() {
-        this.consumer = loadSettings();
     }
 
     public static DepositConsumer getInstance() {
@@ -27,14 +27,8 @@ public class DepositConsumer {
     }
 
     public KafkaConsumer<String, Deposit> loadSettings() {
-        Properties settings = new Properties();
-        settings.put("group.id", "com.santunioni.bankaccount.balance"); // Put here this app identification
-        settings.put("bootstrap.servers", "http://localhost:9092"); // Put here the Kafka cluster addresses
-        settings.put("auto-commit.interval.ms", 5000);
-        settings.put("auto.offset.reset", "earliest");
-        settings.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        var settings = brokerSettings();
         settings.put("value.deserializer", "com.santunioni.bankaccount.balance.serializers.DepositDeserializer");
-        topic = "transactions-deposits";
         final var consumer = new KafkaConsumer<String, Deposit>(settings);
         consumer.subscribe(Collections.singleton(topic));
         return consumer;
