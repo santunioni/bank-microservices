@@ -12,11 +12,10 @@ public class EntityManagerSingleton {
 
     public static EntityManager getInstance() {
         if (instance == null) {
-            var entityManagerFactory = Persistence
-                    .createEntityManagerFactory("Hibernate");
-            instance = entityManagerFactory.createEntityManager();
+            instance = Persistence
+                    .createEntityManagerFactory("Hibernate")
+                    .createEntityManager();
         }
         return instance;
     }
-
 }

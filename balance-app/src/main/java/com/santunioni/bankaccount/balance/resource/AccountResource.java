@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -21,13 +20,7 @@ import static javax.ws.rs.core.Response.status;
 public class AccountResource {
 
     private final Logger log = LoggerFactory.getLogger(AccountResource.class);
-    private final AccountService accountService;
-
-    @Inject
-    public AccountResource(AccountService accountService) {
-        this.accountService = accountService;
-    }
-
+    private final AccountService accountService = AccountService.getInstance();
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -44,7 +37,6 @@ public class AccountResource {
                 .created(URI.create(account.getAccountID().replaceAll(" ","_")))
                 .build();
     }
-
 
 //    @DELETE
 //    @Consumes(MediaType.APPLICATION_JSON)
