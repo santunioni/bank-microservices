@@ -6,18 +6,21 @@ import com.santunioni.bankaccount.balance.domain.Withdraw;
 import com.santunioni.bankaccount.balance.exception.AccountNotFoundException;
 import com.santunioni.bankaccount.balance.repository.AccountRepository;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import java.util.List;
 
-@ApplicationScoped
 public class AccountService {
 
-    private final AccountRepository accountRepository;
+    private static AccountService instance = null;
+    private final AccountRepository accountRepository= AccountRepository.getInstance();
 
-    @Inject
-    public AccountService(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    private AccountService() {
+    }
+
+    public static AccountService getInstance() {
+        if (instance == null) {
+            instance = new AccountService();
+        }
+        return instance;
     }
 
     public List<Account> listAll() {

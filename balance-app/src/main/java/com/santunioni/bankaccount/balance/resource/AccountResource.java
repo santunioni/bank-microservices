@@ -2,7 +2,6 @@ package com.santunioni.bankaccount.balance.resource;
 
 import com.santunioni.bankaccount.balance.domain.Account;
 import com.santunioni.bankaccount.balance.service.AccountService;
-import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +11,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URI;
-import java.util.Optional;
 
 import static java.util.Optional.ofNullable;
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;

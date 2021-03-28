@@ -2,8 +2,6 @@ package com.santunioni.bankaccount.balance.repository;
 
 import com.santunioni.bankaccount.balance.domain.Account;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -13,14 +11,19 @@ import java.util.Optional;
 import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
-@ApplicationScoped
 public class AccountRepository {
 
-    private final EntityManager entityManager;
+    private static AccountRepository instance;
+    private final EntityManager entityManager = EntityManagerSingleton.getInstance();
 
-    @Inject
-    public AccountRepository(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    private AccountRepository() {
+    }
+
+    public static AccountRepository getInstance() {
+        if (instance == null) {
+            instance = new AccountRepository();
+        }
+        return instance;
     }
 
     @Transactional(REQUIRED)
@@ -62,7 +65,7 @@ public class AccountRepository {
                     .createQuery(criteriaQuery)
                     .getResultList();
         } catch (Exception e) {
-            return new ArrayList<Account>();
+            return new ArrayList<>();
         }
     }
 
