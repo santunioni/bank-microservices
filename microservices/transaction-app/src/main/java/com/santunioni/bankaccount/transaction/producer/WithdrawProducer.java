@@ -25,7 +25,6 @@ public class WithdrawProducer {
         return instance;
     }
 
-
     public void stream(Withdraw withdraw) {
         final String topic = "transactions-withdraws";
         final var record = new ProducerRecord<String, Withdraw>(topic, withdraw);

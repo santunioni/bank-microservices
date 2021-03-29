@@ -10,6 +10,11 @@ quarkus:
 #    jdbc.url: jdbc:postgresql://localhost:5432/transactions
 #    username: postgres
 #    password: postgresql
+#
+#  hibernate-orm:
+#    database.generation: update
+#
+#  hibernate.dialect: postgresql
 
 #  smallrye-health:
 #    ui:

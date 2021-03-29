@@ -16,4 +16,9 @@ public class Withdraw {
     public double getValue() {
         return value;
     }
+
+    public double getUuid() {
+        return value;
+    }
+
 }

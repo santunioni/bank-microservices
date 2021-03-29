@@ -14,9 +14,9 @@
         <!--        Implementação do JPA ECLIPSELINK-->
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
-        <class>com.santunioni.bankaccount.transaction.domain.Withdraw</class>
-        <class>com.santunioni.bankaccount.transaction.domain.Deposit</class>
-        <class>com.santunioni.bankaccount.transaction.domain.Transfer</class>
+<!--        <class>com.santunioni.bankaccount.transaction.domain.Withdraw</class>-->
+<!--        <class>com.santunioni.bankaccount.transaction.domain.Deposit</class>-->
+<!--        <class>com.santunioni.bankaccount.transaction.domain.Transfer</class>-->
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
@@ -39,9 +39,9 @@
         <!--        Implementação do JPA HIBERNATE-->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>com.santunioni.bankaccount.transaction.domain.Withdraw</class>
-        <class>com.santunioni.bankaccount.transaction.domain.Deposit</class>
-        <class>com.santunioni.bankaccount.transaction.domain.Transfer</class>
+<!--        <class>com.santunioni.bankaccount.transaction.domain.Withdraw</class>-->
+<!--        <class>com.santunioni.bankaccount.transaction.domain.Deposit</class>-->
+<!--        <class>com.santunioni.bankaccount.transaction.domain.Transfer</class>-->
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
@@ -55,7 +55,7 @@
                 <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
 
     </persistence-unit>

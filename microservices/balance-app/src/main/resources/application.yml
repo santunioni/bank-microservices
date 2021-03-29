@@ -1,13 +1,13 @@
 # configure your datasource
 quarkus:
 
-  datasource:
-    jdbc:
-      url: jdbc:postgresql://localhost:5432/balances
-      driver: org.postgresql.Driver
-    username: ${POSTGRES_USER:postgres}
-    password: ${POSTGRES_PASSWORD:postgresql}
-    db-kind: postgresql
+#  datasource:
+#    jdbc:
+#      url: jdbc:postgresql://localhost:5432/balances
+#      driver: org.postgresql.Driver
+#    username: ${POSTGRES_USER:postgres}
+#    password: ${POSTGRES_PASSWORD:postgresql}
+#    db-kind: postgresql
 
 #  hibernate-orm:
 #    database:
@@ -15,7 +15,7 @@ quarkus:
 
   http:
     root-path: /v1/api
-    port: 8080
+    port: 8079
 
 #  smallrye-health:
 #    ui:
@@ -31,21 +31,21 @@ kafka:
     servers: localhost:9092
 
 
-mp.messaging:
-  # [Channel - data] - Produce data to Kafka
-  incoming:
-
-    - deposits:
-      connector: smallrye-kafka
-      topic: transactions/deposits
-      key.serializer: org.apache.kafka.common.serialization.StringSerializer
-      value.serializer: io.quarkus.kafka.client.serialization.JsonbSerializer
-
-    - withdraws:
-      connector: smallrye-kafka
-      topic: transactions/deposits
-      key.serializer: org.apache.kafka.common.serialization.StringSerializer
-      value.serializer: io.quarkus.kafka.client.serialization.JsonbSerializer
+#mp.messaging:
+#  # [Channel - data] - Produce data to Kafka
+#  incoming:
+#
+#    - deposits:
+#      connector: smallrye-kafka
+#      topic: transactions/deposits
+#      key.serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value.serializer: io.quarkus.kafka.client.serialization.JsonbSerializer
+#
+#    - withdraws:
+#      connector: smallrye-kafka
+#      topic: transactions/deposits
+#      key.serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value.serializer: io.quarkus.kafka.client.serialization.JsonbSerializer
 
   #      broadcast: true
   #      acks: 1

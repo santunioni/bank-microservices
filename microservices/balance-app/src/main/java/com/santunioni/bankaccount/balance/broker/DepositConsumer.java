@@ -12,7 +12,7 @@ import static com.santunioni.bankaccount.balance.settings.Settings.brokerSetting
 public class DepositConsumer {
 
     private static DepositConsumer instance = null;
-    private final AccountService accountService = AccountService.getInstance();
+//    private final AccountService accountService = AccountService.getInstance();
     private final String topic = "transactions-deposits";
     private final KafkaConsumer<String, Deposit> consumer = loadSettings();
 
@@ -52,7 +52,7 @@ public class DepositConsumer {
                         + record.value().getValue()
                         + " to "
                         + record.value().getAccountId());
-                accountService.perform(record.value());
+//                accountService.perform(record.value());
             });
         }
     }

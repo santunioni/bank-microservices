@@ -25,7 +25,6 @@ public class DepositProducer {
         return instance;
     }
 
-
     public void stream(Deposit deposit) {
         final String topic = "transactions-deposits";
         final var record = new ProducerRecord<String, Deposit>(topic, deposit);

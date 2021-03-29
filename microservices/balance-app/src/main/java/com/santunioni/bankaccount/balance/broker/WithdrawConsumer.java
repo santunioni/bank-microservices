@@ -12,7 +12,7 @@ import static com.santunioni.bankaccount.balance.settings.Settings.brokerSetting
 public class WithdrawConsumer {
 
     private static WithdrawConsumer instance = null;
-    private final AccountService accountService = AccountService.getInstance();
+//    private final AccountService accountService = AccountService.getInstance();
     private final String topic = "transactions-withdraws";
     private final KafkaConsumer<String, Withdraw> consumer = loadSettings();
 
@@ -52,7 +52,7 @@ public class WithdrawConsumer {
                         + record.value().getValue()
                         + " from "
                         + record.value().getAccountId());
-                accountService.perform(record.value());
+//                accountService.perform(record.value());
             });
         }
     }

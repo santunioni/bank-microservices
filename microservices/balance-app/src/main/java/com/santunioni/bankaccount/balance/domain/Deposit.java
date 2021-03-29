@@ -17,4 +17,8 @@ public class Deposit {
         return value;
     }
 
+    public double getUuid() {
+        return value;
+    }
+
 }

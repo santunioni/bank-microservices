@@ -4,7 +4,6 @@ import com.santunioni.bankaccount.balance.domain.Account;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,32 +40,10 @@ public class AccountRepository {
 
     @Transactional(SUPPORTS)
     public List<Account> findAll() {
-        var criteriaQuery =
-                entityManager
-                        .getCriteriaBuilder()
-                        .createQuery(Account.class);
-
-        var accountRoot =
-                criteriaQuery
-                        .from(Account.class);
-
-//        var inClause =
-//                entityManager
-//                .getCriteriaBuilder()
-//                .in(accountRoot.get(Account_.nome))
-//                .value(nomeAluno);
-
-        criteriaQuery
-                .select(accountRoot);
-//                .where(inClause);
-
-        try {
-            return entityManager
-                    .createQuery(criteriaQuery)
-                    .getResultList();
-        } catch (Exception e) {
-            return new ArrayList<>();
-        }
+        return entityManager
+                .createQuery("SELECT m FROM Account m",
+                        (Class) Account.class)
+                .getResultList();
     }
 
 
